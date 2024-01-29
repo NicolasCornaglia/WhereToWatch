@@ -9239,41 +9239,14 @@ const movies = {
 };
 
 const SearchBar = () => {
-  // const [movies, setMovies] = useState([]);
-
-  // const getMovies = async () => {
-  //   const title = "star wars";
-  //   const country = "ar";
-
-  //   const url = `https://streaming-availability.p.rapidapi.com/search/title?title=${title}&country=${country}&show_type=all&output_language=en`;
-  //   const options = {
-  //     method: "GET",
-  //     headers: {
-  //       "X-RapidAPI-Key": "1fbb965758msh507653a9f8a9253p144052jsnfac6f700e136",
-  //       "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
-  //     },
-  //   }
-
-  //   try {
-  //     const response = await fetch(url, options);
-  //     const results = await response.json();
-  //     console.log(results)
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getMovies();
-  // }, []);
-
-  // filter the response of the api
 
   return (
     <>
       <div className="flex flex-row justify-center items-center m-15">
         <select className="my-5 mr-1 p-2 rounded-l-3xl text-slate-400 h-10">
-          <option value="ar" className="mt-10">FLAG + Country</option>
+          <option value="ar" className="mt-10">
+            FLAG + Country
+          </option>
           <option value="volvo">Volvo</option>
           <option value="saab">Saab</option>
           <option value="mercedes">Mercedes</option>
@@ -9285,12 +9258,256 @@ const SearchBar = () => {
           placeholder="Type a movie or serie"
           className="my-5 mr-2 py-2 px-3 rounded-r-3xl w-1/3"
         />
-        
+
         <btn className="bg-purple-600 m-15 py-2 px-3 rounded-3xl">Search</btn>
       </div>
 
-      <div>
-        <MoviesList />
+      <div className="flex flex-col">
+        <div className="m-6 p-4 bg-purple-600 rounded-md">
+          <h1 className="flex justify-center"> Available on Streaming Service Name</h1>
+          <div className="flex flex-wrap m-3 justify-evenly">
+          <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2"
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer">Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer">Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer">Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer">Watch now!</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="m-6 p-4 bg-purple-600 rounded-md">
+          <h1 className="flex justify-center"> Available on Streaming Service Name</h1>
+          <div className="flex flex-wrap m-3 justify-evenly">
+          <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2"
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer">Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer">Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer">Watch now!</a>
+            </div>
+            <div
+              id="card"
+              className="rounded-md w-1/6 bg-black p-2  flex flex-col text-center m-2 "
+            >
+              <h4>Title:</h4>
+              <h4>Type:</h4>
+              <h4>Year:</h4>
+              <a href="https://www.google.com"
+              target="_blank"
+              rel="noopener noreferrer">Watch now!</a>
+            </div>
+          </div>
+        </div>
+
+        {/* <MoviesList movies={movies}/> */}
       </div>
     </>
   );
