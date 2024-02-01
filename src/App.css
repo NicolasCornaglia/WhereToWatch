@@ -2,3 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+.menu-flags-button {
+    border: none !important;
+    --tw-text-opacity: 1 !important;
+    color: rgb(148 163 184 / var(--tw-text-opacity)) !important;
+}
