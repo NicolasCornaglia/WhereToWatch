@@ -1,5 +1,5 @@
 import Card from "../Card/Card";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactFlagsSelect from "react-flags-select";
 import moviesAPIResult from "../../data/movies.json";
 
@@ -15,13 +15,28 @@ const SearchBar = () => {
     setInput(document.getElementById("myInput").value);
   };
 
-  const movies = moviesAPIResult.result.map((el) => {
-    return [el.title, el.streamingInfo, el.imdbId];
+  const foundMovies = [];
+  const notFoundMovies = [];
+  // filter the movies that you get to have streaming info asand get titles in a not available string to display
+
+  moviesAPIResult.result.map((el) => {
+    if (Object.keys(el.streamingInfo).length !== 0) {
+      return foundMovies.push([el.title, el.streamingInfo, el.imdbId, el.type]);
+    }
+    return notFoundMovies.push([
+      el.title,
+      { defaultKey: `Not available in ${selectedCountry}` },
+      el.imdbId,
+      el.type,
+    ]);
   });
+
+  console.log(foundMovies);
+  console.log(notFoundMovies);
 
   return (
     <>
-      <div className="flex flex-row justify-center items-center m-15">
+      <div className="flex flex-row justify-center items-center ">
         <ReactFlagsSelect
           selected={selectedCountry}
           onSelect={(code) => setSelectedCountry(code)}
@@ -44,11 +59,20 @@ const SearchBar = () => {
         </button>
       </div>
 
-      <div className="flex flex-col content-center">
-        {movies.map((movie) => {
+      <div>Not found movie titles ... implement</div>
+
+      <div className="flex flex-col">
+        {foundMovies.map((movie) => {
+          // console.log(Object.values(movie[1]))
           return (
-            <li key={movie[2]} className="list-none odelay-300">
-              <Card title={movie[0]} streamingInfo={movie[1]} imdbId={movie[2]} country={selectedCountry}/>
+            <li key={movie[2]} className="list-none odelay-300 m-5">
+              <Card
+                title={movie[0]}
+                streamingInfo={Object.values(movie[1])}
+                imdbId={movie[2]}
+                type={movie[3]}
+                country={selectedCountry}
+              />
             </li>
           );
         })}

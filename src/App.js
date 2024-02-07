@@ -1,5 +1,4 @@
 import "./App.css";
-import Card from "./Components/Card/Card";
 import SearchBar from "./Components/SearchBar/SearchBar";
 import Title from "./Components/Title/Title";
 
