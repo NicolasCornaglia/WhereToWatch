@@ -15,20 +15,16 @@ const SearchBar = () => {
     setInput(document.getElementById("myInput").value);
   };
 
+  // filter the movies that you get to have streaming info 
   const foundMovies = [];
   const notFoundMovies = [];
-  // filter the movies that you get to have streaming info asand get titles in a not available string to display
 
   moviesAPIResult.result.map((el) => {
     if (Object.keys(el.streamingInfo).length !== 0) {
-      return foundMovies.push([el.title, el.streamingInfo, el.imdbId, el.type]);
+      return foundMovies.push({title: el.title, streamingInfo: el.streamingInfo, imdbId: el.imdbId, type: el.type});
     }
-    return notFoundMovies.push([
-      el.title,
-      { defaultKey: `Not available in ${selectedCountry}` },
-      el.imdbId,
-      el.type,
-    ]);
+    return notFoundMovies.push(
+      {title: el.title, streamingInfo: `${`Not available in ${selectedCountry}`}`, imdbId: el.imdbId, type: el.type});
   });
 
   console.log(foundMovies);
@@ -59,18 +55,22 @@ const SearchBar = () => {
         </button>
       </div>
 
-      <div>Not found movie titles ... implement</div>
+      <div className="p-5 text-sm">
+        <span>Not available in {selectedCountry}: </span>
+        {notFoundMovies.map(movie => {
+          return (<span className="px-3">{movie.title}</span>)
+        })}
+      </div>
 
       <div className="flex flex-col">
         {foundMovies.map((movie) => {
-          // console.log(Object.values(movie[1]))
           return (
-            <li key={movie[2]} className="list-none odelay-300 m-5">
+            <li key={movie.imdbId} className="list-none odelay-300 m-5">
               <Card
-                title={movie[0]}
-                streamingInfo={Object.values(movie[1])}
-                imdbId={movie[2]}
-                type={movie[3]}
+                title={movie.title}
+                streamingInfo={Object.values(movie.streamingInfo)}
+                imdbId={movie.imdbId}
+                type={movie.type}
                 country={selectedCountry}
               />
             </li>
