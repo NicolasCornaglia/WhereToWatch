@@ -1,5 +1,3 @@
-Modify the layout for mobile and desktop
-
-Have the complete name of the selected country for the Not Available section
+have the icons of the services in the cards to watch the desired movie.
 
 Implement api requests

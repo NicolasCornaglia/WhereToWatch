@@ -4,7 +4,7 @@ import Title from "./Components/Title/Title";
 
 function App() {
   return (
-    <div className="font-sans  text-white min-h-full">
+    <div className="font-sans text-white min-h-full">
       <Title />
       <SearchBar />
     </div>

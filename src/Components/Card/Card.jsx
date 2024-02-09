@@ -24,7 +24,7 @@ const Card = (props) => {
   // console.log(props.streamingInfo[0][0].service)
   return (
     <>
-      <div className="rounded-md bg-slate-900 w-3/4">
+      <div className="rounded-md bg-slate-900">
         <img src={moviePoster.poster} alt="poster" className="rounded-md"/>
         <div className="p-3">
           <h4>Title: {props.title}</h4>
