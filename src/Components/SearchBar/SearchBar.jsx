@@ -61,11 +61,29 @@ const SearchBar = () => {
           />
         </div>
         <button
-          className="bg-purple-600 py-2 px-3 rounded-3xl w-4/5 md:ml-5 md:w-1/3 hover:ring-2 ring-purple-300"
+          className="bg-purple-600 py-2 px-3 rounded-3xl w-4/5 md:ml-5 md:w-1/3 hover:ring-2 ring-purple-100"
           onClick={printCountryAndInput}
         >
           Search
         </button>
+      </div>
+
+      <div className="flex flex-col mt-10 s:w-4/5 md:flex-row md:flex-wrap md:justify-center md:w-full">
+        {foundMovies.map((movie) => {
+          return (
+            <li key={movie.imdbId} className="list-none my-3 m-auto w-4/5 md:w-2/5 lg:w-1/5 lg:m-4 rounded-md " >
+              <Card
+                title={movie.title}
+                streamingInfo={Object.values(movie.streamingInfo)}
+                imdbId={movie.imdbId}
+                type={movie.type}
+                country={selectedCountry}
+                className="rounded-md bg-none hover:bg-gradient-to-l from-violet-500 to-fuchsia-500 transition-all ease-in duration-300"
+              />
+            </li>
+          )
+        })}
+        
       </div>
 
       <div className="p-5 text-sm hidden md:flex justify-center">
@@ -73,23 +91,6 @@ const SearchBar = () => {
         {notFoundMovies.map((movie) => {
           return <span className="pl-2">{movie.title} |</span>;
         })}
-      </div>
-
-      <div className="flex flex-col mt-3 s:w-4/5 md:flex-row md:flex-wrap md:justify-center md:w-full">
-        {foundMovies.map((movie) => {
-          return (
-            <li key={movie.imdbId} className="list-none my-3 m-auto w-4/5 md:w-2/5 lg:w-1/5 lg:m-4">
-              <Card
-                title={movie.title}
-                streamingInfo={Object.values(movie.streamingInfo)}
-                imdbId={movie.imdbId}
-                type={movie.type}
-                country={selectedCountry}
-              />
-            </li>
-          );
-        })}
-        ;
       </div>
     </>
   );
