@@ -6,7 +6,7 @@ import ReactFlagsSelect from "react-flags-select";
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "1fbb965758msh507653a9f8a9253p144052jsnfac6f700e136",
+    "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
     "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
   },
 };
@@ -64,7 +64,7 @@ const SearchBar = () => {
   };
 
 
-  // console.log(foundMovies);
+console.log(foundMovies);
   // console.log(notFoundMovies);
 
   return (
@@ -97,20 +97,21 @@ const SearchBar = () => {
       </div>
 
       {foundMovies.length > 0 && (
-        <div className="flex flex-col mt-10 s:w-4/5 md:flex-row md:flex-wrap md:justify-center md:w-full">
-          {foundMovies.map((movie) => {
+        <div className="p-5 justify-center flex flex-col mt-10 s:w-4/5 md:flex-row md:flex-wrap md:justify-center md:w-full">
+          {foundMovies.slice(0, 5).map((movie) => {
             return (
               <li
                 key={movie.imdbId}
                 className="list-none my-3 m-auto w-4/5 md:w-2/5 lg:w-1/6 lg:m-4 rounded-md max-w-[300px]"
               >
                 <Card
+                  key={movie.imdbId}
                   title={movie.title}
+                  type = {movie.type}
                   streamingInfo={Object.values(movie.streamingInfo)}
                   imdbId={movie.imdbId}
-                  type={movie.type}
                   country={selectedCountry}
-                  key={movie.imdbId}
+                  
                 />
               </li>
             );
@@ -119,10 +120,11 @@ const SearchBar = () => {
       )}
 
       {notFoundMovies.length > 0 && (
-        <div className="p-5 text-sm hidden md:flex justify-center">
+        <div className="p-5 text-sm hidden md:flex md:flex-col justify-center">
           <span>Not available: </span>
           {notFoundMovies.map((movie) => {
-            return <span className="pl-2">{movie.title} |</span>;
+            return (<div key={movie.imdbId} className="pl-2 flex flex-col">{movie.title} <hr /></div>);
+
           })}
         </div>
       )}
