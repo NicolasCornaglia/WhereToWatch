@@ -16,8 +16,10 @@ const SearchBar = () => {
   const [input, setInput] = useState("");
   const [foundMovies, setFoundMovies] = useState([]);
   const [notFoundMovies, setNotFoundMovies] = useState([]);
+  const [click, setClick] = useState(false);
+  const [errorMessage, setErrorMessage] = useState([]);
 
-/*   const printCountryAndInput = () => {
+  /*   const printCountryAndInput = () => {
     console.log(selectedCountry, input);
   }; */
 
@@ -54,16 +56,19 @@ const SearchBar = () => {
 
       setFoundMovies(foundMovies);
       setNotFoundMovies(notFoundMovies);
+      setErrorMessage([])
     } catch (error) {
       console.error("Error fetching data:", error);
+      setErrorMessage(error);
+      console.log(errorMessage.length);
     }
   };
 
   const handleRefresh = async () => {
-/*     printCountryAndInput(); */
+    /*     printCountryAndInput(); */
     await fetchData();
+    setClick(true);
   };
-
 
   //console.log(foundMovies);
   // console.log(notFoundMovies);
@@ -108,11 +113,10 @@ const SearchBar = () => {
                 <Card
                   key={movie.imdbId}
                   title={movie.title}
-                  type = {movie.type}
+                  type={movie.type}
                   streamingInfo={Object.values(movie.streamingInfo)}
                   imdbId={movie.imdbId}
                   country={selectedCountry}
-                  
                 />
               </li>
             );
@@ -124,18 +128,35 @@ const SearchBar = () => {
         <div className="p-5 text-sm hidden md:flex md:flex-col justify-center">
           <span>Not available: </span>
           {notFoundMovies.map((movie) => {
-            return (<div key={movie.imdbId} className="pl-2 flex flex-col">{movie.title} <hr /></div>);
-
+            return (
+              <div key={movie.imdbId} className="pl-2 flex flex-col">
+                {movie.title} <hr />
+              </div>
+            );
           })}
         </div>
       )}
 
-      {foundMovies.length === 0 && 
-        <div className="flex flex-col justify-center content-center py-40 items-center">
-          <h1 className="text-3xl">No results found!</h1>
-          <p>Try again with different spelling or fewer words.</p>
-        </div>
-      }
+      {errorMessage.length !== undefined &&
+        foundMovies.length === 0 &&
+        input.length !== 0 &&
+        selectedCountry.length !== 0 &&
+        click === true && (
+          <div className="flex flex-col justify-center content-center py-40 items-center">
+            <h1 className="text-3xl">No results found!</h1>
+            <p>Try again with different spelling or fewer words.</p>
+          </div>
+        )}
+
+      {errorMessage.length === undefined &&
+        input.length !== 0 &&
+        selectedCountry.length !== 0 &&
+        click === true && (
+          <div className="flex flex-col justify-center content-center py-40 items-center">
+            <h1 className="text-2xl">No movies found in this country!</h1>
+            <p>We are sorry, please try with a different one.</p>
+          </div>
+        )}
     </>
   );
 };
