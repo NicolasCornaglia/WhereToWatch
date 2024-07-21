@@ -17,9 +17,9 @@ const SearchBar = () => {
   const [foundMovies, setFoundMovies] = useState([]);
   const [notFoundMovies, setNotFoundMovies] = useState([]);
 
-  const printCountryAndInput = () => {
+/*   const printCountryAndInput = () => {
     console.log(selectedCountry, input);
-  };
+  }; */
 
   const fetchData = async () => {
     try {
@@ -51,6 +51,7 @@ const SearchBar = () => {
           });
         }
       });
+
       setFoundMovies(foundMovies);
       setNotFoundMovies(notFoundMovies);
     } catch (error) {
@@ -59,12 +60,12 @@ const SearchBar = () => {
   };
 
   const handleRefresh = async () => {
-    printCountryAndInput();
+/*     printCountryAndInput(); */
     await fetchData();
   };
 
 
-console.log(foundMovies);
+  //console.log(foundMovies);
   // console.log(notFoundMovies);
 
   return (
@@ -128,6 +129,13 @@ console.log(foundMovies);
           })}
         </div>
       )}
+
+      {foundMovies.length === 0 && 
+        <div className="flex flex-col justify-center content-center py-40 items-center">
+          <h1 className="text-3xl">No results found!</h1>
+          <p>Try again with different spelling or fewer words.</p>
+        </div>
+      }
     </>
   );
 };
